@@ -28,8 +28,10 @@ class School(models.Model):
         (0, 'No'),
     )
     TYPE_CHOICES = (
-        (1, 'Goverement Aided'),
+        (1, 'Goverenment Aided'),
         (0, 'Private'),
+		(2, 'Goverenment'),
+		(3, 'Religious'),
     )
     LANGUAGE_CHOICES = (
         ('English','English'),
@@ -52,7 +54,7 @@ class School(models.Model):
     highest_class = models.IntegerField(max_length=2, choices=CLASS_CHOICES)
     recognized = models.IntegerField(max_length=2, choices=RECOGNIZED_CHOICES)
     type = models.IntegerField(max_length=2, choices=TYPE_CHOICES)
-    medium_of_instructions = models.ForeignKey(Language)
+    medium_of_instructions = models.ForeignKey(Language, verbose_name='Medium Of Instruction', null=True, blank=True)
     pincode = models.IntegerField(max_length=6)
     short_name = models.CharField(max_length=50, blank=True)
     address = models.CharField(max_length=200, blank=True)
