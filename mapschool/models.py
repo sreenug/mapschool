@@ -71,28 +71,38 @@ class School(models.Model):
 
 class HEGForm(models.Model):
     CLASS_CHOICES = (
-        (1, 'First'),
-        (2, 'Second'),
-        (3, 'Third'),
-        (4, 'Fourth'),
-        (5, 'Fifth'),
-        (6, 'Sixth'),
-        (7, 'Seventh'),
-        (8, 'Eight'),
-        (9, 'Ninth'),
-        (10, 'Tenth'),
-        (11, 'Eleventh'),
-        (12, 'Twelth'),
-    )
+        (1, 'Medicine'),
+        (2, 'Engineering'),
+        (3, 'Management-MBA'),
+        (4, 'Diploma-Engineering'),
+        (5, 'Bed/Teacher Training'),
+        (6, 'Dental'),
+        (7, 'Paramedical'),
+        (8, 'Other Professional Course(s)'),
+        (9, 'Other'),
+        )
+    ORGANIZATION_CHOICES = (
+        (1, 'Government'),
+        (2, 'Congress'),
+        (3, 'BJP'),
+        (4, 'JD(U)'),
+        (5, 'TDP'),
+        (6, 'CPI(M)'),
+        (7, 'MIM'),
+        (8, 'TRS'),
+        (9, 'Independent'),
+        (10, 'Other')
+     )
+    
     RECOGNIZED_CHOICES = (
         (1, 'YES'),
         (0, 'No'),
     )
     TYPE_CHOICES = (
-        (1, 'Goverenment Aided'),
-        (0, 'Private'),
-        (2, 'Goverenment'),
-        (3, 'Religious'),
+        (1, 'University'),
+        (0, 'College-Professional'),
+        (2, 'College-General Degree'),
+        (3, 'College-Diploma'),
     )
     LANGUAGE_CHOICES = (
         ('English','English'),
@@ -117,10 +127,10 @@ class HEGForm(models.Model):
     name_of_the_trust = models.CharField(max_length=200)
     name_of_personality_1 = models.CharField(max_length=200,blank=True, null=True)
     designation_1 = models.CharField(max_length=200,blank=True, null=True)
-    organization_affiliation_1 = models.CharField(max_length=200,blank=True, null=True)
+    organization_affiliation_1 = models.CharField(max_length=200,blank=True, null=True, choices=ORGANIZATION_CHOICES)
     name_of_personality_2 = models.CharField(max_length=200,blank=True, null=True)
     designation_2 = models.CharField(max_length=200,blank=True, null=True)
-    organization_affiliation_2 = models.CharField(max_length=200,blank=True, null=True)
+    organization_affiliation_2 = models.CharField(max_length=200,blank=True, null=True, choices=ORGANIZATION_CHOICES)
     
     class Meta:
         db_table = u'heg_form'
