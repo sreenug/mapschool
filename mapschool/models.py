@@ -115,12 +115,12 @@ class HEGForm(models.Model):
     type = models.IntegerField(max_length=2, choices=TYPE_CHOICES)
     main_unaided_courses = models.CharField(max_length = 200, choices=CLASS_CHOICES)
     name_of_the_trust = models.CharField(max_length=200)
-    name_of_personality_1 = models.CharField(max_length=200)
-    designation_1 = models.CharField(max_length=200)
-    organization_affiliation_1 = models.CharField(max_length=200)
-    name_of_personality_2 = models.CharField(max_length=200)
-    designation_2 = models.CharField(max_length=200)
-    organization_affiliation_2 = models.CharField(max_length=200)
+    name_of_personality_1 = models.CharField(max_length=200,blank=True, null=True)
+    designation_1 = models.CharField(max_length=200,blank=True, null=True)
+    organization_affiliation_1 = models.CharField(max_length=200,blank=True, null=True)
+    name_of_personality_2 = models.CharField(max_length=200,blank=True, null=True)
+    designation_2 = models.CharField(max_length=200,blank=True, null=True)
+    organization_affiliation_2 = models.CharField(max_length=200,blank=True, null=True)
     
     class Meta:
         db_table = u'heg_form'
