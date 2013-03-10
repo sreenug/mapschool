@@ -71,27 +71,27 @@ class School(models.Model):
 
 class HEGForm(models.Model):
     CLASS_CHOICES = (
-        ('Medicine', 'Medicine'),
-        ('Engineering', 'Engineering'),
-        ('Management-MBA', 'Management-MBA'),
-        ('Diploma-Engineering', 'Diploma-Engineering'),
-        ('Bed/Teacher Training', 'Bed/Teacher Training'),
-        ('Dental', 'Dental'),
-        ('Paramedical', 'Paramedical'),
-        ('Other Professional Course(s)', 'Other Professional Course(s)'),
-        ('Other', 'Other'),
+        ('1', 'Medicine'),
+        ('2', 'Engineering'),
+        ('3', 'Management-MBA'),
+        ('4', 'Diploma-Engineering'),
+        ('5', 'Bed/Teacher Training'),
+        ('6', 'Dental'),
+        ('7', 'Paramedical'),
+        ('8', 'Other Professional Course(s)'),
+        ('9', 'Other'),
         )
     ORGANIZATION_CHOICES = (
-        ('Government', 'Government'),
-        ('Congress', 'Congress'),
-        ('BJP', 'BJP'),
-        ('JD(U)', 'JD(U)'),
-        ('TDP', 'TDP'),
-        ('CPI(M)', 'CPI(M)'),
-        ('MIM', 'MIM'),
-        ('TRS', 'TRS'),
-        ('Independent', 'Independent'),
-        ('Other', 'Other')
+        ('1', 'Government'),
+        ('2', 'Congress'),
+        ('3', 'BJP'),
+        ('4', 'JD(U)'),
+        ('5', 'TDP'),
+        ('6', 'CPI(M)'),
+        ('7', 'MIM'),
+        ('8', 'TRS'),
+        ('9', 'Independent'),
+        ('10', 'Other')
      )
     
     RECOGNIZED_CHOICES = (
