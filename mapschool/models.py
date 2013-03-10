@@ -99,10 +99,10 @@ class HEGForm(models.Model):
         (0, 'No'),
     )
     TYPE_CHOICES = (
-        ('University', 'University'),
-        ('College-Professional', 'College-Professional'),
-        ('College-General Degree', 'College-General Degree'),
-        ('College-Diploma', 'College-Diploma'),
+        (1, 'University'),
+        (2, 'College-Professional'),
+        (3, 'College-General Degree'),
+        (4, 'College-Diploma'),
     )
     LANGUAGE_CHOICES = (
         ('English','English'),
