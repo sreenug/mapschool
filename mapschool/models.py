@@ -1,13 +1,5 @@
 from django.db import models
 
-class Language(models.Model):
-    language_name = models.CharField(max_length=100,  unique='True')
-    class Meta:
-        db_table = u'language'
-
-    def __unicode__(self):
-        return self.language_name
-
 class School(models.Model):
     CLASS_CHOICES = (
         (1, 'First'),
@@ -53,8 +45,8 @@ class School(models.Model):
     lowest_class = models.IntegerField(max_length=2, choices=CLASS_CHOICES)
     highest_class = models.IntegerField(max_length=2, choices=CLASS_CHOICES)
     recognized = models.IntegerField(max_length=2, choices=RECOGNIZED_CHOICES)
-    type = models.IntegerField(max_length=2, choices=TYPE_CHOICES)
-    medium_of_instructions = models.ForeignKey(Language, verbose_name='Medium Of Instruction', null=True, blank=True)
+    school_type = models.IntegerField(max_length=2, choices=TYPE_CHOICES)
+    medium_of_instructions = models.CharField(max_length=200, choices=LANGUAGE_CHOICES)
     pincode = models.IntegerField(max_length=6)
     short_name = models.CharField(max_length=50, blank=True)
     address = models.CharField(max_length=200, blank=True)
@@ -62,6 +54,9 @@ class School(models.Model):
     other_fee_per_annum = models.CharField(max_length=50, blank=True)
     monthly_fee_for_lowest_class = models.CharField(max_length=50, blank=True)
     monthly_fee_for_highest_class = models.CharField(max_length=50, blank=True)
+    latitude = models.CharField(max_length=20)
+    longitude = models.CharField(max_length=20)
+    image= models.ImageField(upload_to='mapschool/mapschool/images', blank=True,null=True)
     
     class Meta:
         db_table = u'school'
