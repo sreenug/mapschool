@@ -14,6 +14,5 @@ class HEGFormAdmin(admin.ModelAdmin):
     list_display = ('name', 'founded_in', 'name_of_the_trust', 'name_of_personality_1', 'name_of_personality_2')
     search_fields = ['name', 'founded_in', 'name_of_the_trust', 'name_of_personality_1', 'name_of_personality_1']
 
-admin.site.register(Language)
 admin.site.register(School, SchoolAdmin)
 admin.site.register(HEGForm, HEGFormAdmin)
