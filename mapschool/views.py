@@ -2,6 +2,8 @@ from django.shortcuts import redirect, render, render_to_response
 from django.http import Http404, HttpResponse, HttpResponseNotFound, QueryDict
 from django.utils import simplejson
 from models import *
+from base64 import b64decode
+from django.core.files.base import ContentFile
 
 def add_school(request):
 	name = request.GET.get('name', "")
@@ -19,14 +21,16 @@ def add_school(request):
 	recognized = request.GET.get("recognized", None)
 	school_type = request.GET.get("school_type", None)
 	short_name = request.GET.get("short_name", "")
+	image_data = b64decode(request.GET.get('image', None))
+	image_field = ContentFile(image_data, name+'.png')
 	try:
 		temp = School(name = name, address = address, examination_board = examination_board, highest_class = highest_class,
 		lowest_class = lowest_class, medium_of_instructions = medium_of_instructions, monthly_fee_for_highest_class = monthly_fee_for_highest_class,
 		monthly_fee_for_lowest_class = monthly_fee_for_lowest_class, other_fee_per_annum = other_fee_per_annum, pincode = pincode,
-		recognized = recognized, school_type = school_type, short_name = short_name)
+		recognized = recognized, school_type = school_type, short_name = short_name, image = image_field)
 		temp.save()
-	except e:
-		pass
+	except Exception as e:
+		return HttpResponse(e)
 		
 	
 	return HttpResponse(temp.id)

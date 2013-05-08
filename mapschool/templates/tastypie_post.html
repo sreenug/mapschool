@@ -14,6 +14,21 @@
     </div>
     <script type="text/javascript">
     $(document).ready( function () {
+	school_json1 = {
+		"name":"treed",
+		"lowest_class":1,
+		"highest_class":1,
+		"recognized":1,
+		"school_type":1,
+		"medium_of_instructions":"English",
+		"pincode":11234,
+		"short_name":"",
+		"address":"",
+		"examination_board":"",
+		"other_fee_per_annum":"",
+		"monthly_fee_for_lowest_class":"",
+		"monthly_fee_for_highest_class":""
+	};
 	school_json = {
 	    "address": "", 
 		"examination_board": "", 
@@ -68,11 +83,11 @@
 		$('#school_post').click( function () {
 			$.ajax({
 		        type: "POST",
-		        url: 'http://54.214.7.11/api/school/',
+		        url: 'http://127.0.0.1:8000/api/school/',
 		        contentType:'application/json',
   				dataType: 'application/json',
 		        async: true,
-		        data: JSON.stringify(school_json),
+		        data: JSON.stringify(school_json1),
 		        success: function () {	
 		        	alert("Thanks!"); 
 		        },
