@@ -21,8 +21,12 @@ def add_school(request):
 	recognized = request.GET.get("recognized", None)
 	school_type = request.GET.get("school_type", None)
 	short_name = request.GET.get("short_name", "")
-	image_data = b64decode(request.GET.get('image', None))
-	image_field = ContentFile(image_data, name+'.png')
+	image = request.GET.get('image', None)
+	if image:
+		image_data = b64decode(image)
+		image_field = ContentFile(image_data, name+'.png')
+	else:
+		image_field = None
 	try:
 		temp = School(name = name, address = address, examination_board = examination_board, highest_class = highest_class,
 		lowest_class = lowest_class, medium_of_instructions = medium_of_instructions, monthly_fee_for_highest_class = monthly_fee_for_highest_class,
