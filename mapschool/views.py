@@ -31,7 +31,8 @@ def add_school(request):
 		temp = School(name = name, address = address, examination_board = examination_board, highest_class = highest_class,
 		lowest_class = lowest_class, medium_of_instructions = medium_of_instructions, monthly_fee_for_highest_class = monthly_fee_for_highest_class,
 		monthly_fee_for_lowest_class = monthly_fee_for_lowest_class, other_fee_per_annum = other_fee_per_annum, pincode = pincode,
-		recognized = recognized, school_type = school_type, short_name = short_name, image = image_field)
+		recognized = recognized, school_type = school_type, short_name = short_name, image = image_field, latitude=latitude,
+		longitude = longitude)
 		temp.save()
 	except Exception as e:
 		return HttpResponse(e)
