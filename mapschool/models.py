@@ -54,8 +54,8 @@ class School(models.Model):
     other_fee_per_annum = models.CharField(max_length=50, blank=True)
     monthly_fee_for_lowest_class = models.CharField(max_length=50, blank=True)
     monthly_fee_for_highest_class = models.CharField(max_length=50, blank=True)
-    latitude = models.CharField(max_length=20, blank = True)
-    longitude = models.CharField(max_length=20, blank = True)
+    latitude = models.CharField(max_length=20, blank = True, null=True)
+    longitude = models.CharField(max_length=20, blank = True, null=True)
     image= models.ImageField(upload_to='mapschool/mapschool/images', blank=True,null=True)
     
     class Meta:
