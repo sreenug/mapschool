@@ -21,5 +21,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(school_resource.urls)),
     url(r'^addschool/', views.add_school),
+	url(r'^addothers/', views.add_others),
 	url(r'^tastypie/post/?$',views.tastypie_post),
 )
