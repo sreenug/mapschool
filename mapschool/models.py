@@ -148,6 +148,7 @@ class Others(models.Model):
         ('Autostand','Autostand'),
         ('Temple','Temple'),        
     )
+    others = models.CharField(max_length=200,blank=True, null=True, choices=OTHER_CHOICES)
     name = models.CharField(max_length=200)
     latitude = models.CharField(max_length=20, blank = True, null=True)
     longitude = models.CharField(max_length=20, blank = True, null=True)

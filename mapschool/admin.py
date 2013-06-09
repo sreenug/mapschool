@@ -5,6 +5,11 @@ class SchoolAdmin(admin.ModelAdmin):
     list_display = ('name', 'lowest_class', 'highest_class', 'medium_of_instructions')
     search_fields = ['name', 'pincode', 'medium_of_instructions']
 
+class OthersAdmin(admin.ModelAdmin):
+    list_display = ('name', 'others')
+    search_fields = ['name', 'others']
+
+
 class HEGFormAdmin(admin.ModelAdmin):
     fieldsets = [
                 (None, {'fields':['name','founded_in', 'type', 'main_unaided_courses', 'name_of_the_trust']}),
@@ -16,3 +21,4 @@ class HEGFormAdmin(admin.ModelAdmin):
 
 admin.site.register(School, SchoolAdmin)
 admin.site.register(HEGForm, HEGFormAdmin)
+admin.site.register(Others, OthersAdmin)
