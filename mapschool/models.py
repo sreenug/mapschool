@@ -48,14 +48,21 @@ class School(models.Model):
     school_type = models.IntegerField(max_length=2, choices=TYPE_CHOICES)
     medium_of_instructions = models.CharField(max_length=200, choices=LANGUAGE_CHOICES)
     pincode = models.IntegerField(max_length=6)
-    short_name = models.CharField(max_length=50, blank=True)
-    address = models.CharField(max_length=200, blank=True)
+    short_name = models.CharField(max_length=50, blank=True, null=True)
+    address = models.CharField(max_length=200, blank=True, null=True)
+    address_1 = models.CharField(max_length=200, blank=True, null=True)
+    address_2 = models.CharField(max_length=200, blank=True, null=True)
+    address_3 = models.CharField(max_length=200, blank=True, null=True)
+    address_4 = models.CharField(max_length=200, blank=True, null=True)
+    address_5 = models.CharField(max_length=200, blank=True, null=True)
     examination_board = models.CharField(max_length=100, blank=True)
     other_fee_per_annum = models.CharField(max_length=50, blank=True)
     monthly_fee_for_lowest_class = models.CharField(max_length=50, blank=True)
     monthly_fee_for_highest_class = models.CharField(max_length=50, blank=True)
     latitude = models.CharField(max_length=20, blank = True, null=True)
     longitude = models.CharField(max_length=20, blank = True, null=True)
+    website = models.CharField(max_length=200, blank = True, null=True)
+    phone_number = models.CharField(max_length=200, blank = True, null=True)
     image= models.ImageField(upload_to='mapschool/mapschool/images', blank=True,null=True)
     
     class Meta:
@@ -129,6 +136,25 @@ class HEGForm(models.Model):
     
     class Meta:
         db_table = u'heg_form'
+        
+    def __unicode__(self):
+        return self.name
+
+class Others(models.Model):
+    
+    OTHER_CHOICES = (
+        ('Busstop','Busstop'),
+        ('Railway Station','Railway Station'),
+        ('Autostand','Autostand'),
+        ('Temple','Temple'),        
+    )
+    name = models.CharField(max_length=200)
+    latitude = models.CharField(max_length=20, blank = True, null=True)
+    longitude = models.CharField(max_length=20, blank = True, null=True)
+    image= models.ImageField(upload_to='mapschool/mapschool/images', blank=True,null=True)
+    
+    class Meta:
+        db_table = u'others'
         
     def __unicode__(self):
         return self.name
