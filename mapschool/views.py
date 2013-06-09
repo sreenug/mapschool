@@ -5,6 +5,27 @@ from models import *
 from base64 import b64decode
 from django.core.files.base import ContentFile
 
+def add_others(request):
+	name = request.GET.get('others_name', "")
+	latitude = request.GET.get("latitude", "")
+	longitude = request.GET.get("longitude", "")
+	others = request.GET.get("others_type", "")
+	image = request.GET.get('others_image', None)
+	if image:
+		image_data = b64decode(image)
+		image_field = ContentFile(image_data, name+'.png')
+	else:
+		image_field = None
+	try:
+		temp = Others(name = name, image = image_field, latitude=latitude,
+		longitude = longitude, others = others)
+		temp.save()
+	except Exception as e:
+		return HttpResponse(e)
+		
+	
+	return HttpResponse(temp.id)
+
 def add_school(request):
 	name = request.GET.get('name', "")
 	address = request.GET.get("address", "")
