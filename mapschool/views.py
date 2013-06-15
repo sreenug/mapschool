@@ -34,7 +34,7 @@ def add_school(request):
 	latitude = request.GET.get("latitude", "")
 	longitude = request.GET.get("longitude", "")
 	lowest_class = request.GET.get("lowest_class", None)
-	medium_of_instruction = request.GET.get("medium_of_instruction", "")
+	medium_of_instruction = request.GET.get("medium_of_instructions", "")
 	monthly_fee_for_highest_class = request.GET.get("monthly_fee_for_highest_class", "")
 	monthly_fee_for_lowest_class = request.GET.get("monthly_fee_for_lowest_class", "")
 	other_fee_per_annum = request.GET.get("other_fee_per_annum", "")
