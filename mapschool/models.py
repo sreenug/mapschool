@@ -20,7 +20,7 @@ class School(models.Model):
         (0, 'No'),
     )
     TYPE_CHOICES = (
-        (1, 'Goverenment Aided'),
+        (1, 'Government Aided'),
         (0, 'Private'),
         (2, 'Goverenment'),
         (3, 'Religious'),
@@ -30,9 +30,10 @@ class School(models.Model):
         ('Hindi','Hindi'),
         ('Mix English and Hindi','Mix English and Hindi'),
         ('Urdu','Urdu'),
-        ('Gujrathi','Gujrathi'),
+        ('Gujarati','Gujarati'),
         ('Tamil','Tamil'),
         ('Telugu','Telugu'),
+        ('Kannad','Kannad'),
         ('Punjabi','Punjabi'),
         ('Malayalam','Malayalam'),
         ('Marathi','Marathi'),
@@ -41,12 +42,20 @@ class School(models.Model):
         ('Assamese','Assamese'),
         ('Other','Other'),
     )
+    BOARD_CHOICES = (
+        ('CISE','CISE'),
+        ('CBSE','CBSE'),
+        ('State board','State board'),
+        ('Foreign board','Foreign board'),
+        ('Not available','Not available'),
+        ('Other','Other'),
+    )
     name = models.CharField(max_length=200)
     lowest_class = models.IntegerField(max_length=2, choices=CLASS_CHOICES)
     highest_class = models.IntegerField(max_length=2, choices=CLASS_CHOICES)
     recognized = models.IntegerField(max_length=2, choices=RECOGNIZED_CHOICES)
     school_type = models.IntegerField(max_length=2, choices=TYPE_CHOICES)
-    medium_of_instructions = models.CharField(max_length=200, choices=LANGUAGE_CHOICES)
+    medium_of_instruction = models.CharField(max_length=200, choices=LANGUAGE_CHOICES)
     pincode = models.IntegerField(max_length=6)
     short_name = models.CharField(max_length=50, blank=True, null=True)
     address = models.CharField(max_length=200, blank=True, null=True)
@@ -55,7 +64,7 @@ class School(models.Model):
     address_3 = models.CharField(max_length=200, blank=True, null=True)
     address_4 = models.CharField(max_length=200, blank=True, null=True)
     address_5 = models.CharField(max_length=200, blank=True, null=True)
-    examination_board = models.CharField(max_length=100, blank=True)
+    examination_board = models.CharField(max_length=100, choices=BOARD_CHOICES)
     other_fee_per_annum = models.CharField(max_length=50, blank=True)
     monthly_fee_for_lowest_class = models.CharField(max_length=50, blank=True)
     monthly_fee_for_highest_class = models.CharField(max_length=50, blank=True)
@@ -92,19 +101,19 @@ class HEGForm(models.Model):
         ('6', 'CPI(M)'),
         ('7', 'MIM'),
         ('8', 'TRS'),
-        ('9', 'Independent'),
-        ('10', 'Other')
+        ('9', 'JD(S)'),
+        ('10', 'Independent'),
+        ('11', 'Other')
      )
     
     RECOGNIZED_CHOICES = (
-        (1, 'YES'),
+        (1, 'Yes'),
         (0, 'No'),
     )
     TYPE_CHOICES = (
         (1, 'University'),
-        (2, 'College-Professional'),
-        (3, 'College-General Degree'),
-        (4, 'College-Diploma'),
+        (2, 'AIDED COLLEGE'),
+        (3, 'UNAIDED COLLEGE'),        
     )
     LANGUAGE_CHOICES = (
         ('English','English'),
@@ -122,9 +131,22 @@ class HEGForm(models.Model):
         ('Assamese','Assamese'),
         ('Other','Other'),
     )
+    COURSE_TYPE_CHOICES = (
+        ('ASC','ASC'),
+        ('Engg./Tech./Arch./Management','Engg./Tech./Arch./Management'),
+        ('Medical','Medical'),
+        ('Law','Law'),
+        ('Teacher Edu','Teacher Edu'),
+        ('Polytechnic','Polytechnic'),
+        ('Diploma','Diploma'),
+        ('Agriculture','Agriculture'),
+        ('Other','Other'),
+    )
     name = models.CharField(max_length=200)
+    medium_of_instruction = models.CharField(max_length=200, choices=LANGUAGE_CHOICES)
     founded_in = models.DateField(null=True, db_column='founded_in', blank=True)
-    type = models.IntegerField(max_length=2, choices=TYPE_CHOICES)
+    management_type = models.IntegerField(max_length=2, choices=TYPE_CHOICES)
+    course_type = models.CharField(max_length = 200, choices=COURSE_TYPE_CHOICES)
     main_unaided_courses = models.CharField(max_length = 200, choices=CLASS_CHOICES)
     name_of_the_trust = models.CharField(max_length=200)
     name_of_personality_1 = models.CharField(max_length=200,blank=True, null=True)
@@ -133,7 +155,17 @@ class HEGForm(models.Model):
     name_of_personality_2 = models.CharField(max_length=200,blank=True, null=True)
     designation_2 = models.CharField(max_length=200,blank=True, null=True)
     organization_affiliation_2 = models.CharField(max_length=200,blank=True, null=True, choices=ORGANIZATION_CHOICES)
-    
+    address = models.CharField(max_length=200, blank=True, null=True)
+    address_1 = models.CharField(max_length=200, blank=True, null=True)
+    address_2 = models.CharField(max_length=200, blank=True, null=True)
+    address_3 = models.CharField(max_length=200, blank=True, null=True)
+    address_4 = models.CharField(max_length=200, blank=True, null=True)
+    address_5 = models.CharField(max_length=200, blank=True, null=True)
+    latitude = models.CharField(max_length=20, blank = True, null=True)
+    longitude = models.CharField(max_length=20, blank = True, null=True)
+    website = models.CharField(max_length=200, blank = True, null=True)
+    phone_number = models.CharField(max_length=200, blank = True, null=True)
+    image= models.ImageField(upload_to='mapschool/mapschool/images/heg', blank=True,null=True)
     class Meta:
         db_table = u'heg_form'
         
