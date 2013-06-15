@@ -34,7 +34,7 @@ def add_school(request):
 	latitude = request.GET.get("latitude", "")
 	longitude = request.GET.get("longitude", "")
 	lowest_class = request.GET.get("lowest_class", None)
-	medium_of_instructions = request.GET.get("medium_of_instructions", "")
+	medium_of_instruction = request.GET.get("medium_of_instruction", "")
 	monthly_fee_for_highest_class = request.GET.get("monthly_fee_for_highest_class", "")
 	monthly_fee_for_lowest_class = request.GET.get("monthly_fee_for_lowest_class", "")
 	other_fee_per_annum = request.GET.get("other_fee_per_annum", "")
@@ -50,7 +50,7 @@ def add_school(request):
 		image_field = None
 	try:
 		temp = School(name = name, address = address, examination_board = examination_board, highest_class = highest_class,
-		lowest_class = lowest_class, medium_of_instructions = medium_of_instructions, monthly_fee_for_highest_class = monthly_fee_for_highest_class,
+		lowest_class = lowest_class, medium_of_instruction = medium_of_instruction, monthly_fee_for_highest_class = monthly_fee_for_highest_class,
 		monthly_fee_for_lowest_class = monthly_fee_for_lowest_class, other_fee_per_annum = other_fee_per_annum, pincode = pincode,
 		recognized = recognized, school_type = school_type, short_name = short_name, image = image_field, latitude=latitude,
 		longitude = longitude)
