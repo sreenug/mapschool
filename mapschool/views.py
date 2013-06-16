@@ -73,7 +73,7 @@ def add_heg(request):
 	name = request.GET.get('name', "")
 	medium_of_instruction = request.GET.get("medium_of_instruction", "")
 	founded_in = request.GET.get("founded_in", "")
-	management_type = request.get("management_type", "")
+	management_type = request.GET.get("management_type", "")
 	course_type = request.GET.get("course_type", "")
 	main_unaided_courses = request.GET.get("main_unaided_courses", "") 
 	name_of_the_trust = request.GET.get("name_of_the_trust", None)
