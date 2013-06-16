@@ -48,10 +48,10 @@ class School(models.Model):
         ('State board','State board'),
         ('Foreign board','Foreign board'),
         ('Not available','Not available'),
-		('Not applicable','Not applicable'),
+        ('Not applicable','Not applicable'),
         ('Other','Other'),
     )
-	ORGANIZATION_CHOICES = (
+    ORGANIZATION_CHOICES = (
         ('1', 'Government'),
         ('2', 'Congress'),
         ('3', 'BJP'),
@@ -89,7 +89,7 @@ class School(models.Model):
     longitude = models.CharField(max_length=20, blank = True, null=True)
     website = models.CharField(max_length=200, blank = True, null=True)
     phone_number = models.CharField(max_length=200, blank = True, null=True)
-	uuid = models.CharField(max_length=100, blank = True, null=True)
+    uuid = models.CharField(max_length=100, blank = True, null=True)
     image= models.ImageField(upload_to='mapschool/mapschool/images', blank=True,null=True)
     
     class Meta:
@@ -184,7 +184,7 @@ class HEGForm(models.Model):
     website = models.CharField(max_length=200, blank = True, null=True)
     phone_number = models.CharField(max_length=200, blank = True, null=True)
     uuid = models.CharField(max_length=100, blank = True, null=True)
-	image= models.ImageField(upload_to='mapschool/mapschool/images/heg', blank=True,null=True)
+    image= models.ImageField(upload_to='mapschool/mapschool/images/heg', blank=True,null=True)
     class Meta:
         db_table = u'heg_form'
         

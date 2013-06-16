@@ -60,7 +60,7 @@ def add_school(request):
 		lowest_class = lowest_class, medium_of_instruction = medium_of_instruction, monthly_fee_for_highest_class = monthly_fee_for_highest_class,
 		monthly_fee_for_lowest_class = monthly_fee_for_lowest_class, other_fee_per_annum = other_fee_per_annum, pincode = pincode,
 		recognized = recognized, school_type = school_type, short_name = short_name, image = image_field, latitude=latitude,
-		longitude = longitude,name_of_personality_1 = name_of_personality_1, designation_1 = designation_1, organization_affiliation_1=organization_affiliation_1
+		longitude = longitude,name_of_personality_1 = name_of_personality_1, designation_1 = designation_1, organization_affiliation_1=organization_affiliation_1,
 		website = website, phone_number = phone_number, uuid = uuid)
 		temp.save()
 	except Exception as e:
