@@ -48,8 +48,22 @@ class School(models.Model):
         ('State board','State board'),
         ('Foreign board','Foreign board'),
         ('Not available','Not available'),
+		('Not applicable','Not applicable'),
         ('Other','Other'),
     )
+	ORGANIZATION_CHOICES = (
+        ('1', 'Government'),
+        ('2', 'Congress'),
+        ('3', 'BJP'),
+        ('4', 'JD(U)'),
+        ('5', 'TDP'),
+        ('6', 'CPI(M)'),
+        ('7', 'MIM'),
+        ('8', 'TRS'),
+        ('9', 'JD(S)'),
+        ('10', 'Independent'),
+        ('11', 'Other')
+     )
     name = models.CharField(max_length=200)
     lowest_class = models.IntegerField(max_length=2, choices=CLASS_CHOICES)
     highest_class = models.IntegerField(max_length=2, choices=CLASS_CHOICES)
@@ -68,10 +82,14 @@ class School(models.Model):
     other_fee_per_annum = models.CharField(max_length=50, blank=True)
     monthly_fee_for_lowest_class = models.CharField(max_length=50, blank=True)
     monthly_fee_for_highest_class = models.CharField(max_length=50, blank=True)
+    name_of_personality_1 = models.CharField(max_length=200,blank=True, null=True)
+    designation_1 = models.CharField(max_length=200,blank=True, null=True)
+    organization_affiliation_1 = models.CharField(max_length=200,blank=True, null=True, choices=ORGANIZATION_CHOICES)
     latitude = models.CharField(max_length=20, blank = True, null=True)
     longitude = models.CharField(max_length=20, blank = True, null=True)
     website = models.CharField(max_length=200, blank = True, null=True)
     phone_number = models.CharField(max_length=200, blank = True, null=True)
+	uuid = models.CharField(max_length=100, blank = True, null=True)
     image= models.ImageField(upload_to='mapschool/mapschool/images', blank=True,null=True)
     
     class Meta:
@@ -165,7 +183,8 @@ class HEGForm(models.Model):
     longitude = models.CharField(max_length=20, blank = True, null=True)
     website = models.CharField(max_length=200, blank = True, null=True)
     phone_number = models.CharField(max_length=200, blank = True, null=True)
-    image= models.ImageField(upload_to='mapschool/mapschool/images/heg', blank=True,null=True)
+    uuid = models.CharField(max_length=100, blank = True, null=True)
+	image= models.ImageField(upload_to='mapschool/mapschool/images/heg', blank=True,null=True)
     class Meta:
         db_table = u'heg_form'
         
@@ -184,8 +203,8 @@ class Others(models.Model):
     name = models.CharField(max_length=200)
     latitude = models.CharField(max_length=20, blank = True, null=True)
     longitude = models.CharField(max_length=20, blank = True, null=True)
-    image= models.ImageField(upload_to='mapschool/mapschool/images', blank=True,null=True)
-    
+    image= models.ImageField(upload_to='mapschool/mapschool/images/others', blank=True,null=True)
+    uuid = models.CharField(max_length=100, blank = True, null=True)
     class Meta:
         db_table = u'others'
         

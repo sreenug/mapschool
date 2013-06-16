@@ -22,5 +22,6 @@ urlpatterns = patterns('',
     url(r'^api/', include(school_resource.urls)),
     url(r'^addschool/', views.add_school),
 	url(r'^addothers/', views.add_others),
+	url(r'^addheg/', views.add_heg),
 	url(r'^tastypie/post/?$',views.tastypie_post),
 )
