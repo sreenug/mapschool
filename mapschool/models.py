@@ -43,7 +43,7 @@ class School(models.Model):
         ('Other','Other'),
     )
     BOARD_CHOICES = (
-        ('CISE','CISE'),
+        ('CISCE','CISCE'),
         ('CBSE','CBSE'),
         ('State board','State board'),
         ('Foreign board','Foreign board'),
@@ -51,6 +51,13 @@ class School(models.Model):
         ('Not applicable','Not applicable'),
         ('Other','Other'),
     )
+    
+    GENDER_CHOICES = (
+        ('Girls','Girls'),
+        ('Boys','Boys'),
+        ('Co Education','Co Education'),        
+    )
+    
     ORGANIZATION_CHOICES = (
         ('1', 'Government'),
         ('2', 'Congress'),
@@ -69,9 +76,11 @@ class School(models.Model):
     highest_class = models.IntegerField(max_length=2, choices=CLASS_CHOICES)
     recognized = models.IntegerField(max_length=2, choices=RECOGNIZED_CHOICES)
     school_type = models.IntegerField(max_length=2, choices=TYPE_CHOICES)
+    gender_type = models.CharField(max_length=200, choices=GENDER_CHOICES)
     medium_of_instruction = models.CharField(max_length=200, choices=LANGUAGE_CHOICES)
     pincode = models.IntegerField(max_length=6)
     short_name = models.CharField(max_length=50, blank=True, null=True)
+    preschool_attached = models.CharField(max_length=200, blank=True, null=True)
     address = models.CharField(max_length=200, blank=True, null=True)
     address_1 = models.CharField(max_length=200, blank=True, null=True)
     address_2 = models.CharField(max_length=200, blank=True, null=True)
@@ -138,7 +147,7 @@ class HEGForm(models.Model):
         ('Hindi','Hindi'),
         ('Mix English and Hindi','Mix English and Hindi'),
         ('Urdu','Urdu'),
-        ('Gujrathi','Gujrathi'),
+        ('Gujarati','Gujarati'),
         ('Tamil','Tamil'),
         ('Telugu','Telugu'),
         ('Punjabi','Punjabi'),
