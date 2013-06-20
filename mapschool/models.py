@@ -22,8 +22,9 @@ class School(models.Model):
     TYPE_CHOICES = (
         (1, 'Government Aided'),
         (0, 'Private'),
-        (2, 'Goverenment'),
+        (2, 'Government'),
         (3, 'Religious'),
+		(4, 'Special School'),
     )
     LANGUAGE_CHOICES = (
         ('English','English'),

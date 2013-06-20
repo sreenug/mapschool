@@ -36,6 +36,8 @@ def add_school(request):
 	longitude = request.GET.get("longitude", "")
 	lowest_class = request.GET.get("lowest_class", None)
 	medium_of_instruction = request.GET.get("medium_of_instruction", "")
+	gender_type = request.GET.get("gender_type", "")
+	preschool_attached = request.GET.get("preschool_attached", "")
 	monthly_fee_for_highest_class = request.GET.get("monthly_fee_for_highest_class", "")
 	monthly_fee_for_lowest_class = request.GET.get("monthly_fee_for_lowest_class", "")
 	other_fee_per_annum = request.GET.get("other_fee_per_annum", "")
@@ -61,7 +63,7 @@ def add_school(request):
 		monthly_fee_for_lowest_class = monthly_fee_for_lowest_class, other_fee_per_annum = other_fee_per_annum, pincode = pincode,
 		recognized = recognized, school_type = school_type, short_name = short_name, image = image_field, latitude=latitude,
 		longitude = longitude,name_of_personality_1 = name_of_personality_1, designation_1 = designation_1, organization_affiliation_1=organization_affiliation_1,
-		website = website, phone_number = phone_number, uuid = uuid)
+		website = website, phone_number = phone_number, uuid = uuid, gender_type=gender_type, preschool_attached=preschool_attached)
 		temp.save()
 	except Exception as e:
 		return HttpResponse(e)
