@@ -10,20 +10,20 @@ from urlparse import parse_qs
 def add_others(request):
     qs_string = parse_qs(request.GET.get('form_data'))
     name = qs_string.get('name', [None])
-    latitude = request.GET.get("latitude", [None])
-    longitude = request.GET.get("longitude ", [None])
+    latitude = request.GET.get("latitude", None)
+    longitude = request.GET.get("longitude ", None)
     others = qs_string.get("others_type", [None])
     others_others = qs_string.get("others_others", [None])
     image = request.GET.get('others_image', None)
-    uuid = request.GET.get("uuid ", [None])
+    uuid = request.GET.get("uuid ", None)
     if image:
         image_data = b64decode(image)
         image_field = ContentFile(image_data, name[0]+'.png')
     else:
         image_field = None
     try:
-        temp = Other(name = name, image = image_field, latitude=latitude,
-        longitude = longitude, others = others,others_others = others_others, uuid = uuid)
+        temp = Other(name = name[0], image = image_field, latitude=latitude,
+        longitude = longitude, others = others[0],others_others = others_others[0], uuid = uuid)
         temp.save()
     except Exception as e:
         return HttpResponse(e)
@@ -65,11 +65,11 @@ def add_school(request):
     designation_3 = qs_string.get("designation_3", [None]) 
     organization_affiliation_3 = qs_string.get("organization_affiliation_3", [None]) 
     organization_affiliation_3_other = qs_string.get("organization_affiliation_3_other", [None]) 
-    latitude = request.GET.get("latitude", [None])
-    longitude = request.GET.get("longitude ", [None])
+    latitude = request.GET.get("latitude", None)
+    longitude = request.GET.get("longitude ", None)
     website = qs_string.get("website", [None])
     phone_number = qs_string.get("phone_number", [None])
-    uuid = request.GET.get("uuid ", [None])
+    uuid = request.GET.get("uuid ", None)
     image = request.GET.get('image', None)
     if image:
         image_data = b64decode(image)
@@ -107,11 +107,11 @@ def add_school(request):
         designation_3 = designation_3[0], 
         organization_affiliation_3=organization_affiliation_3[0],
         organization_affiliation_3_other=organization_affiliation_3_other[0],
-        latitude=latitude[0],
-        longitude = longitude[0],
+        latitude=latitude,
+        longitude = longitude,
         website = website[0], 
         phone_number = phone_number[0], 
-        uuid = uuid[0], 
+        uuid = uuid, 
         image = image_field
         )
         temp.save()
@@ -160,11 +160,11 @@ def add_heg(request):
     organization_affiliation_5_other = qs_string.get("organization_affiliation_5_other", [None]) 
     address = qs_string.get("address", [None])
     pincode = qs_string.get("pincode", [None])
-    latitude = request.GET.get("latitude", [None])
-    longitude = request.GET.get("longitude ", [None])
+    latitude = request.GET.get("latitude", None)
+    longitude = request.GET.get("longitude ", None)
     website = qs_string.get("website", [None])
     phone_number = qs_string.get("phone_number", [None])
-    uuid = request.GET.get("uuid ", [None])
+    uuid = request.GET.get("uuid ", None)
     image = request.GET.get('heg_image', None)
     if image:
         image_data = b64decode(image)
@@ -210,9 +210,9 @@ def add_heg(request):
         website = website[0], 
         phone_number = phone_number[0], 
         image = image_field, 
-        latitude=latitude[0], 
-        longitude = longitude[0], 
-        uuid = uuid[0]
+        latitude=latitude, 
+        longitude = longitude, 
+        uuid = uuid
         )
         temp.save()
     except Exception as e:
