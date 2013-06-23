@@ -10,10 +10,10 @@ class OthersAdmin(admin.ModelAdmin):
     search_fields = ['name', 'others']
 
 
-class HEGFormAdmin(admin.ModelAdmin):
+class HEIFormAdmin(admin.ModelAdmin):
     list_display = ('name', 'founded_in', 'name_of_the_trust', 'name_of_personality_1', 'name_of_personality_2')
     search_fields = ['name', 'founded_in', 'name_of_the_trust', 'name_of_personality_1', 'name_of_personality_1']
 
 admin.site.register(School, SchoolAdmin)
-admin.site.register(HEGForm, HEGFormAdmin)
-admin.site.register(Others, OthersAdmin)
+admin.site.register(HEIForm, HEIFormAdmin)
+admin.site.register(Other, OthersAdmin)
