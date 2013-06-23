@@ -10,15 +10,15 @@ from urlparse import parse_qs
 def add_others(request):
     qs_string = parse_qs(request.GET.get('form_data'))
     name = qs_string.get('name', [None])
-    latitude = qs_string.get("latitude", [None])
-    longitude = qs_string.get("longitude", [None])
+    latitude = request.GET.get("latitude", None)
+    longitude = request.GET.get("longitude ", None)
     others = qs_string.get("others_type", [None])
     others_others = qs_string.get("others_others", [None])
     image = request.GET.get('others_image', None)
-    uuid = qs_string.get("uuid", [None])
+    uuid = request.GET.get("uuid ", None)
     if image:
         image_data = b64decode(image)
-        image_field = ContentFile(image_data, name+'.png')
+        image_field = ContentFile(image_data, name[0]+'.png')
     else:
         image_field = None
     try:
@@ -65,15 +65,15 @@ def add_school(request):
     designation_3 = qs_string.get("designation_3", [None]) 
     organization_affiliation_3 = qs_string.get("organization_affiliation_3", [None]) 
     organization_affiliation_3_other = qs_string.get("organization_affiliation_3_other", [None]) 
-    latitude = qs_string.get("latitude", [None])
-    longitude = qs_string.get("longitude", [None])
+    latitude = request.GET.get("latitude", None)
+    longitude = request.GET.get("longitude ", None)
     website = qs_string.get("website", [None])
     phone_number = qs_string.get("phone_number", [None])
-    uuid = qs_string.get("uuid", [None])
+    uuid = request.GET.get("uuid ", None)
     image = request.GET.get('image', None)
     if image:
         image_data = b64decode(image)
-        image_field = ContentFile(image_data, name+'.png')
+        image_field = ContentFile(image_data, name[0]+'.png')
     else:
         image_field = None
     try:
@@ -160,15 +160,15 @@ def add_heg(request):
     organization_affiliation_5_other = qs_string.get("organization_affiliation_5_other", [None]) 
     address = qs_string.get("address", [None])
     pincode = qs_string.get("pincode", [None])
-    latitude = qs_string.get("latitude", [None])
-    longitude = qs_string.get("longitude", [None])
+    latitude = request.GET.get("latitude", None)
+    longitude = request.GET.get("longitude ", None)
     website = qs_string.get("website", [None])
     phone_number = qs_string.get("phone_number", [None])
-    uuid = qs_string.get("uuid", [None])
+    uuid = request.GET.get("uuid ", None)
     image = request.GET.get('heg_image', None)
     if image:
         image_data = b64decode(image)
-        image_field = ContentFile(image_data, name+'.png')
+        image_field = ContentFile(image_data, name[0]+'.png')
     else:
         image_field = None
     try:
