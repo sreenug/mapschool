@@ -12,10 +12,8 @@
 <script type='text/javascript'>
 $("#search").click(function() {
 	if($('#search_input').val() != "") {
-		alert('hi');
 		$.get("/search", {'searchText':$('#search_input').val()})
 		.done(function(data) {
-		  alert("Data Loaded: " + data);
 		  $('#result').html(data);
 		});
 	} else {
