@@ -5,6 +5,7 @@ from models import *
 from base64 import b64decode
 from django.core.files.base import ContentFile
 from urlparse import parse_qs
+from django.db.models import Q
 
 
 def add_others(request):
@@ -223,3 +224,16 @@ def add_heg(request):
 
 def tastypie_post(request):
     return render_to_response('tastypie_post.html')
+    
+def get_school(request):
+    return render_to_response('search.html')
+def search(request):
+    searchText = request.GET.get('searchText', None)
+    if searchText:
+        schools  = School.objects.filter( Q(name__icontains = searchText) | Q(place_name__icontains = searchText)).values_list('name', 'place_name')
+        text = "<table class='table'><th>School name</th><th>Placename</th>"
+        for school in schools:
+            text += "<tr><td>"+school[0]+"</td><td>"+school[1]+"</td></tr>"
+        text += "</table>"
+        
+    return HttpResponse(text)

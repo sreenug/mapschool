@@ -24,4 +24,6 @@ urlpatterns = patterns('',
 	url(r'^addothers/', views.add_others),
 	url(r'^addheg/', views.add_heg),
 	url(r'^tastypie/post/?$',views.tastypie_post),
+	url(r'^getschool/', views.get_school),
+	url(r'^search/', views.search),
 )

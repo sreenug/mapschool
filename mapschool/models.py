@@ -111,6 +111,7 @@ OTHER_CHOICES = (
 )
 class School(models.Model):
     name = models.CharField(max_length=200)
+    place_name = models.CharField(max_length=200)
     lowest_class = models.CharField(max_length=200, choices=CLASS_CHOICES)
     highest_class = models.CharField(max_length=200, choices=CLASS_CHOICES)
     recognized = models.CharField(max_length=10, choices=RECOGNIZED_CHOICES)

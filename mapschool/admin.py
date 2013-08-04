@@ -2,8 +2,8 @@ from django.contrib import admin
 from models import *
 
 class SchoolAdmin(admin.ModelAdmin):
-    list_display = ('name', 'lowest_class', 'highest_class', 'medium_of_instruction')
-    search_fields = ['name', 'pincode', 'medium_of_instructions']
+    list_display = ('name', 'place_name')
+    search_fields = ['name', 'place_name']
 
 class OthersAdmin(admin.ModelAdmin):
     list_display = ('name', 'others')

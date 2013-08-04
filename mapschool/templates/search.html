@@ -1,0 +1,27 @@
+<html>
+<head>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+</head>
+<body>
+<h3>search school</h3>
+<input id="search_input" style="margin-left:30px;margin-top:10px;" type="text" class="form-control" id="exampleInputEmail" placeholder="Enter school name">
+<button id="search" type="button" class="btn btn-default">Search</button>
+<div id='result'></div>
+<script type='text/javascript'>
+$("#search").click(function() {
+	if($('#search_input').val() != "") {
+		alert('hi');
+		$.get("/search", {'searchText':$('#search_input').val()})
+		.done(function(data) {
+		  alert("Data Loaded: " + data);
+		  $('#result').html(data);
+		});
+	} else {
+		alert('enter search parameter');
+	}
+});
+</script>
+</body>
+</html>
